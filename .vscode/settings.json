@@ -39,7 +39,7 @@
     "dotenv" : "tune"
   },
   "typescript.updateImportsOnFileMove.enabled" : "never",
-  "workbench.colorTheme" : "Omni",
+  "workbench.colorTheme" : "Monokai",
   "material-icon-theme.files.associations" : {
     "tsconfig.json" : "tune",
     "*.webpack.js" : "webpack",
@@ -130,7 +130,7 @@
   },
   "editor.semanticHighlighting.enabled" : false,
   "breadcrumbs.enabled" : true,
-  "workbench.productIconTheme" : "fluent-icons",
+  "workbench.productIconTheme" : "Default",
   "editor.fontFamily" : "JetBrains Mono",
   "gitlens.codeLens.authors.enabled" : false,
   "editor.tabSize" : 4,
@@ -144,7 +144,7 @@
   },
   "tabnine.experimentalAutoImports" : true,
   "gitlens.codeLens.enabled": false,
-  "workbench.iconTheme": "material-icon-theme",
+  "workbench.iconTheme": "vscode-icons",
   "files.autoSave": "off",
   "files.trimTrailingWhitespace": true,
   "java.project.sourcePaths": [
