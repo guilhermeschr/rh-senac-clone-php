@@ -77,7 +77,7 @@ function getUrlBase(port) {
     }
 
     if(isLocal()){
-        return "http://localhost/apiphp/api.php/" + port;
+        return "http://localhost/RH-SENAC/api-rh-senac-clone-php/api.php" + port;
     }
 
     return "https://apiphpsenac.herokuapp.com/api.php/" + port;
