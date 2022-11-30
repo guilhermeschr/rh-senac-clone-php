@@ -9,75 +9,14 @@ function isSupaBase(){
     return false;
 }
 
-
-
-function getMedicosApiSupabase() {
-    callApi("GET", "medicos", undefined, function(data) {
-
-    });
-}
-
-function getFolha(limite) {
-
-    if (limite == undefined) {
-        limite = 5;
-    }
-
-    let token_logado = localStorage.getItem('token_logado');
-
-    callApi("GET", "folha", undefined, function(data) {
-
-        const aDadosFolha = data;
-        let body = document.querySelector(".containerTable-body");
-
-        // limpa a tabela atual
-        body.innerHTML = "";
-
-        let contaFolha = 1;
-        aDadosFolha.forEach(function(oFolha, key) {
-
-            // lista apenas o limite de folhas
-            if (contaFolha <= limite) {
-
-                const dataFolha = oFolha.competencia;
-                const tipoFolha = oFolha.tipo;
-                const competenciaFolha = oFolha.competencia;
-
-                let proventoFolha = formataNum(oFolha.provento);
-                let descontoFolha = formataNum(oFolha.desconto);
-                let liquidoFolha = formataNum(oFolha.liquido);
-
-                // Chama a tela de modal de detalhe da folha
-                const details = `<td>
-                                <button class="open-detalheFolhaPagamento" data-toggle="modal" data-id="22022" data-target="#modalFolhaPagamento">
-                                <box-icon name='search-alt-2'></box-icon>
-                                </button>
-                            </td>`;
-
-                // adiciona as colunas da tabela da consulta de folha de pagamento
-                body.innerHTML += `<tr>
-                                    <td>` + dataFolha + `</td>
-                                    <td>` + tipoFolha + `</td>
-                                    <td>` + competenciaFolha + `</td>
-                                    <td>` + proventoFolha + `</td>
-                                    <td>` + descontoFolha + `</td>
-                                    <td>` + liquidoFolha + `</td>
-                                    ` + details + `
-                                </tr>`;
-            }
-
-            contaFolha++;
-        });
-    });
-}
-
 function getUrlBase(port) {
     if (port == undefined) {
         port = "ping";
     }
 
     if(isLocal()){
-        return "http://localhost/RH-SENAC/api-rh-senac-clone-php/api.php" + port;
+        //      http://localhost/api-rh-senac-clone-php/api.php
+        return "http://localhost/api-rh-senac-clone-php/api.php/" + port;
     }
 
     return "https://apiphpsenac.herokuapp.com/api.php/" + port;
@@ -85,36 +24,32 @@ function getUrlBase(port) {
 
 function getHeaders() {
     return new Headers({
-        "Access-Control-Allow-Methods": "POST, GET, OPTIONS",
-        "Access-Control-Allow-Headers": "X-PINGOTHER, Content-Type",
-        "Access-Control-Max-Age": "86400",
-        "HTTP_HOST": "web-api-java-gelvazio.herokuapp.com",
+        //"Access-Control-Allow-Methods": "POST, GET, OPTIONS",
+        //"Access-Control-Allow-Headers": "X-PINGOTHER, Content-Type",
+        //"Access-Control-Max-Age": "86400",
         "Accept": "Application/json",
-        "chave-api-dados": "15455",
-        "Access-Control-Allow-Origin": "*",
-        "Access-Control-Allow-Credentials": true
+        //"Access-Control-Allow-Origin": "*",
+        //"Access-Control-Allow-Credentials": true,
+        "apikey": getToken(),
+        "Content-type":"application/json"
     });
 }
 
 
-function getHeaders() {
+function getHeaders2() {
     if(isSupaBase()){
         return getHeadersSupabase();
     }
+
     return new Headers({
         "apikey": getToken(),
     });
 }
 
 function getHeadersSupabase() {
-    if(isSupaBase()){
-        return new Headers({
-            "apikey": getTokenSupabase(),
-            "Authorization": "Bearer " + getTokenSupabase(),
-        });
-    }
     return new Headers({
-        "apikey": getToken(),
+        "apikey": getTokenSupabase(),
+        "Authorization": "Bearer " + getTokenSupabase(),
     });
 }
 
@@ -139,6 +74,7 @@ function getMyInitFetchApi(method, body) {
             mode: 'cors',
             cache: 'default',
             body: JSON.stringify(body)
+            //body:body
         };
     }
 
@@ -189,6 +125,7 @@ async function callApi(method, port, body, oCall) {
 
         })
         .catch(function(error) {
+            debugger;
             console.log('There has been a problem with your fetch operation: ' + error.message);
         });
 }

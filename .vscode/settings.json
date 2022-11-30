@@ -2,7 +2,7 @@
   "emmet.syntaxProfiles" : {
     "javascript" : "jsx"
   },
-  "editor.formatOnSave" : false,
+  "editor.formatOnSave" : true,
   "workbench.startupEditor" : "newUntitledFile",
   "editor.fontSize" : 17,
   "javascript.suggest.autoImports" : true,
@@ -39,7 +39,7 @@
     "dotenv" : "tune"
   },
   "typescript.updateImportsOnFileMove.enabled" : "never",
-  "workbench.colorTheme" : "Monokai",
+  "workbench.colorTheme" : "Omni",
   "material-icon-theme.files.associations" : {
     "tsconfig.json" : "tune",
     "*.webpack.js" : "webpack",
@@ -130,7 +130,7 @@
   },
   "editor.semanticHighlighting.enabled" : false,
   "breadcrumbs.enabled" : true,
-  "workbench.productIconTheme" : "Default",
+  "workbench.productIconTheme" : "fluent-icons",
   "editor.fontFamily" : "JetBrains Mono",
   "gitlens.codeLens.authors.enabled" : false,
   "editor.tabSize" : 4,
@@ -144,7 +144,7 @@
   },
   "tabnine.experimentalAutoImports" : true,
   "gitlens.codeLens.enabled": false,
-  "workbench.iconTheme": "vscode-icons",
+  "workbench.iconTheme": "material-icon-theme",
   "files.autoSave": "off",
   "files.trimTrailingWhitespace": true,
   "java.project.sourcePaths": [

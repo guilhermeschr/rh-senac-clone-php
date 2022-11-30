@@ -27,3 +27,25 @@ function formataNum(num) {
 
     return (((sign) ? '' : '-') + num + ',' + cents);
 }
+
+/**
+ * Converte data em formato brasileiro para formato americano ou vice-e-versa
+ * @param dtData Data a converter
+ * @type string
+ */
+function converteData(dtData) {
+    valor = dtData.indexOf("/");
+
+    // Converte para modo americano
+    if (valor > -1) {
+        data = dtData.split('/');
+        //ano, mes, dia
+        dtNovData = data[2] + "-" + data[1] + "-" + data[0];
+    } else {
+        data = dtData.split('-');
+        //dia, mes, ano
+        dtNovData = data[2] + "/" + data[1] + "/" + data[0];
+    }
+
+    return dtNovData;
+}
